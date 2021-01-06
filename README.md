@@ -3,7 +3,6 @@
 Sample code written in [java](https://github.com/gmuth/ipp-samples/tree/main/src/main/java/ipp)
 and [kotlin](https://github.com/gmuth/ipp-samples/tree/main/src/main/kotlin/ipp)
 using my [ipp-client library](https://github.com/gmuth/ipp-client-kotlin).
-If the ipp-uri belongs to a real printer the program waits for physical output.
 
 ## Java
 
