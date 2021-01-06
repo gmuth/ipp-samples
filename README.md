@@ -15,7 +15,7 @@ IppPrinter ippPrinter = new IppPrinter("ipp://colorjet.local/ipp/printer");
 ippPrinter.logDetails();
 
 // print file
-File file = new File("test-docs/A4-ten-pages.pdf");
+File file = new File("my-document.pdf");
 IppJob job = ippPrinter.printJob(
   file,
   documentFormat("application/pdf"),
