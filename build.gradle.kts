@@ -5,6 +5,9 @@ plugins {
     id("org.jetbrains.kotlin.jvm") version "1.3.72"
 }
 
+group = "de.gmuth"
+version = "1.0-SNAPSHOT"
+
 repositories {
     mavenLocal()
     mavenCentral()
