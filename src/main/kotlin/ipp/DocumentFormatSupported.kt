@@ -1,4 +1,4 @@
-package de.gmuth.ipp
+package ipp
 
 import de.gmuth.ipp.client.IppPrinter
 
@@ -8,4 +8,10 @@ fun main() {
     for (mimeMediaType in ippPrinter.documentFormatSupported) {
         println("- $mimeMediaType")
     }
+
+//    supported document formats:
+//    - application/octet-stream
+//    - image/urf
+//    - application/pdf
+//    - image/jpeg
 }

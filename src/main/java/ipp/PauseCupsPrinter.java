@@ -1,4 +1,4 @@
-package de.gmuth.ipp;
+package ipp;
 
 import de.gmuth.ipp.cups.CupsClient;
 

@@ -1,4 +1,4 @@
-package de.gmuth.ipp
+package ipp
 
 import de.gmuth.ipp.client.IppColorMode
 import de.gmuth.ipp.client.IppPrinter

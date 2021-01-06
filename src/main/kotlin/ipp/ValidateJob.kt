@@ -1,4 +1,4 @@
-package de.gmuth.ipp
+package ipp
 
 import de.gmuth.ipp.client.IppColorMode
 import de.gmuth.ipp.client.IppMedia
@@ -35,5 +35,9 @@ fun main() {
             }
         }
     }
+
+//    status: client-error-attributes-or-values-not-supported
+//    unsupported attributes or values:
+//    media-col (collection) = {media-source=manual}
 
 }

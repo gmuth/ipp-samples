@@ -27,7 +27,8 @@ tasks.withType<KotlinCompile> {
 }
 
 dependencies {
+    implementation("de.gmuth.ipp:ipp-client-kotlin:2.0-SNAPSHOT")
+    // the following kotlin dependencies are not required for usage from java
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
-    implementation("de.gmuth.ipp:ipp-client-kotlin:2.0-SNAPSHOT")
 }
