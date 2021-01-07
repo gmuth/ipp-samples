@@ -44,9 +44,12 @@
       <artifactId>ipp-client-kotlin</artifactId>
       <version>2.0-SNAPSHOT</version>
     </dependency>
-
     <dependency>
-      <!-- not required for usage from java -->
+      <artifactId>jmdns</artifactId>
+      <groupId>org.jmdns</groupId>
+      <version>3.5.6</version>
+    </dependency>
+    <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
       <artifactId>kotlin-stdlib-jdk8</artifactId>
     </dependency>
