@@ -36,4 +36,7 @@ dependencies {
     // the following kotlin dependencies are not required for usage from java
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
+
+    // mDNS printer discovery
+    implementation("org.jmdns:jmdns:3.5.6")
 }
