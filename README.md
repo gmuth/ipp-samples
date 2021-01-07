@@ -4,6 +4,24 @@ Sample code written in [java](https://github.com/gmuth/ipp-samples/tree/main/src
 and [kotlin](https://github.com/gmuth/ipp-samples/tree/main/src/main/kotlin/ipp)
 using my [ipp-client library](https://github.com/gmuth/ipp-client-kotlin).
 
+## Bonjour Discovery
+
+Use [jmDNS](https://github.com/jmdns/jmdns) to
+[discover printers](https://github.com/gmuth/ipp-samples/blob/main/src/main/kotlin/mdns/DiscoverIppPrinters.kt)
+via Bonjour including AirPrint compatible printers.
+
+```
+val jmDns = JmDNS.create()
+jmDns.list("_ipp._tcp.local.").forEach {
+    val printerName = it.name
+    val printerUri = with(it) { URI.create("ipp://$server:$port/${getPropertyString("rp")}") }
+    val ippPrinter = IppPrinter(printerUri)
+    println("* $printerName")
+    println("  $printerUri")
+    println("  $ippPrinter")
+}
+jmDns.close()
+```
 ## Java
 
 Print a pdf file and wait for the printer to finish.
@@ -28,7 +46,6 @@ job.waitForTermination();
 job.logDetails();
 
 ```
-
 
 ## Dependency
 
