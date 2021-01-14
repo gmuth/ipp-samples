@@ -36,7 +36,13 @@ dependencies {
     // the following kotlin dependencies are not required for usage from java
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9")
 
-    // mDNS printer discovery
+    // mDNS printer discovery - uses slf4j
     implementation("org.jmdns:jmdns:3.5.6")
+
+    //implementation("ch.qos.logback:logback-core:1.2.3")
+    // logging implementation
+    implementation("ch.qos.logback:logback-classic:1.2.3")
+
 }
