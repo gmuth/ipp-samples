@@ -6,7 +6,9 @@
   </appender>
   <logger level="WARN" name="javax.jmdns"/>
   <logger level="INFO" name="mdns"/>
-  <root level="INFO">
+  <logger level="TRACE" name="log"/>
+  <logger level="INFO" name="de.gmuth.ipp"/>
+  <root level="WARN">
     <appender-ref ref="CONSOLE"/>
   </root>
 </configuration>
