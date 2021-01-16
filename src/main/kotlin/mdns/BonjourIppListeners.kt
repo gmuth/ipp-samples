@@ -1,6 +1,7 @@
 package mdns
 
 import de.gmuth.ipp.client.IppPrinter
+import de.gmuth.log.Slf4JLogging
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import org.slf4j.Logger
@@ -55,7 +56,9 @@ object BonjourIppListener : ServiceListener {
     }
 }
 
+
 fun main() {
+    Slf4JLogging.configure()
     BonjourIppListener.listen()
     BonjourIppListener.listServices()
 }
