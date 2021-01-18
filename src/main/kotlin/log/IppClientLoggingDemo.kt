@@ -4,7 +4,7 @@ import de.gmuth.log.Logging
 
 class IppClientLoggingDemo {
 
-    val log = Logging.getLogger { }
+    private val log = Logging.getLogger { }
 
     fun log() {
         log.trace { "trace message" }
@@ -12,6 +12,8 @@ class IppClientLoggingDemo {
         log.info { "info  message" }
         log.warn { "warn  message" }
         log.error { "error message" }
+        log.error(null) { "null exception" }
+        log.error(IllegalStateException("throwable message")) { "exception" }
     }
 }
 

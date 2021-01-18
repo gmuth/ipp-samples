@@ -9,8 +9,6 @@ group = "de.gmuth"
 version = "1.0-SNAPSHOT"
 
 repositories {
-    mavenLocal()
-    mavenCentral()
     maven {
         url = uri("https://maven.pkg.github.com/gmuth/ipp-client-kotlin")
         credentials {
@@ -21,6 +19,8 @@ repositories {
             password = project.findProperty("gpr.token") as String?
         }
     }
+    mavenLocal()
+    mavenCentral()
 }
 
 defaultTasks("clean", "compileJava", "compileKotlin")
@@ -39,3 +39,8 @@ dependencies {
     implementation("org.jmdns:jmdns:3.5.6")
     implementation("de.gmuth.ipp:ipp-client-kotlin:2.0-SNAPSHOT")
 }
+
+// gw --refresh-dependencies clean
+//configurations.all {
+//    resolutionStrategy.cacheChangingModulesFor(0, "seconds")
+//}

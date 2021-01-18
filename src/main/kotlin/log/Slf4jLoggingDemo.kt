@@ -1,10 +1,11 @@
 package log
 
+import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 class Slf4jLoggingDemo {
 
-    val log = LoggerFactory.getLogger(this.javaClass)
+    private val log: Logger = LoggerFactory.getLogger(this.javaClass)
 
     fun log() {
         log.trace("trace message")
@@ -12,6 +13,8 @@ class Slf4jLoggingDemo {
         log.info("info  message")
         log.warn("warn  message")
         log.error("error message")
+        log.error("null exception", null)
+        log.error("exception", IllegalStateException("throwable message"))
     }
 }
 
