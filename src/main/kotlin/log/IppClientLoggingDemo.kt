@@ -4,7 +4,9 @@ import de.gmuth.log.Logging
 
 class IppClientLoggingDemo {
 
-    private val log = Logging.getLogger { }
+    companion object {
+        val log = Logging.getLogger { }
+    }
 
     fun log() {
         log.trace { "trace message" }
