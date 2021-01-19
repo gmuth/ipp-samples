@@ -7,6 +7,7 @@
   <logger level="WARN" name="javax.jmdns"/>
   <logger level="INFO" name="mdns"/>
   <logger level="TRACE" name="log"/>
+  <logger level="TRACE" name="org.slf4j"/>
   <logger level="INFO" name="de.gmuth.ipp"/>
   <root level="WARN">
     <appender-ref ref="CONSOLE"/>
