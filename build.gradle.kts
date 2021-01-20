@@ -15,8 +15,8 @@ repositories {
             // set gpr.user and gpr.token in ~/.gradle/gradle.properties
             // gpr.user=myname
             // gpr.token=mytoken
-            username = project.findProperty("gpr.user") as String?
-            password = project.findProperty("gpr.token") as String?
+            username = project.findProperty("gpr.user") as String? ?: System.getenv("GITHUB_ACTOR")
+            password = project.findProperty("gpr.token") as String? ?: System.getenv("GITHUB_TOKEN")
         }
     }
     mavenLocal()
