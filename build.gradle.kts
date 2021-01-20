@@ -16,7 +16,7 @@ repositories {
             // gpr.user=myname
             // gpr.token=mytoken
             username = project.findProperty("gpr.user") as String? ?: System.getenv("GITHUB_ACTOR")
-            password = project.findProperty("gpr.token") as String? ?: System.getenv("GITHUB_TOKEN")
+            password = project.findProperty("gpr.token") as String? ?: System.getenv("PACKAGE_READ_TOKEN")
         }
     }
     mavenLocal()
