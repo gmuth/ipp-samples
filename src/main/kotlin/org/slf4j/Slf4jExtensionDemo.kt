@@ -3,7 +3,7 @@ package org.slf4j
 class Slf4jExtensionDemo {
 
     companion object {
-        val log = LoggerFactory.getLogger(this.javaClass)
+        val log = LoggerFactory.getLogger(Slf4jExtensionDemo::class.java)
     }
 
     fun log() {

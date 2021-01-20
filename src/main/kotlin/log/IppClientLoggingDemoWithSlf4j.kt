@@ -1,8 +1,8 @@
 package log
 
-import de.gmuth.log.Slf4JLogging
+import de.gmuth.log.Slf4jLogging
 
 fun main() {
-    Slf4JLogging.configure()
+    Slf4jLogging.configure()
     IppClientLoggingDemo().log()
 }
