@@ -8,9 +8,6 @@ plugins {
 group = "de.gmuth"
 version = "1.0-SNAPSHOT"
 
-println("ACTOR" + System.getenv("GITHUB_ACTOR"))
-println("TOKEN" + System.getenv("PACKAGE_READ_TOKEN")?.length)
-
 repositories {
     maven {
         url = uri("https://maven.pkg.github.com/gmuth/ipp-client-kotlin")
