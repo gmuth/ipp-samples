@@ -4,6 +4,7 @@ Sample code written in [java](https://github.com/gmuth/ipp-samples/tree/main/src
 and [kotlin](https://github.com/gmuth/ipp-samples/tree/main/src/main/kotlin/ipp)
 using my [ipp-client library](https://github.com/gmuth/ipp-client-kotlin).
 
+[![gradle build](https://github.com/gmuth/ipp-samples/workflows/gradle%20build/badge.svg)](https://github.com/gmuth/ipp-samples/actions?query=workflow%3A%22gradle+build%22)
 ## Bonjour Discovery
 
 Use [jmDNS](https://github.com/jmdns/jmdns) to
