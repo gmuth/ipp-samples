@@ -1,10 +1,12 @@
+[![gradle build](https://github.com/gmuth/ipp-samples/workflows/gradle%20build/badge.svg)](https://github.com/gmuth/ipp-samples/actions?query=workflow%3A%22gradle+build%22)
+[![maven build](https://github.com/gmuth/ipp-samples/workflows/maven%20build/badge.svg)](https://github.com/gmuth/ipp-samples/actions?query=workflow%3A%22maven+build%22)
+
 # ipp-samples
 
 Sample code written in [java](https://github.com/gmuth/ipp-samples/tree/main/src/main/java/ipp)
 and [kotlin](https://github.com/gmuth/ipp-samples/tree/main/src/main/kotlin/ipp)
 using my [ipp-client library](https://github.com/gmuth/ipp-client-kotlin).
 
-[![gradle build](https://github.com/gmuth/ipp-samples/workflows/gradle%20build/badge.svg)](https://github.com/gmuth/ipp-samples/actions?query=workflow%3A%22gradle+build%22)
 ## Bonjour Discovery
 
 Use [jmDNS](https://github.com/jmdns/jmdns) to
