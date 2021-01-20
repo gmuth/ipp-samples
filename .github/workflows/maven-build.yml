@@ -29,6 +29,6 @@ jobs:
       - name: Grant execute permission
         run: chmod +x mvnw
       - name: Build with maven wrapper
-        run: ./mvnw build
+        run: ./mvnw
         env:
           PACKAGE_READ_TOKEN: ${{ secrets.PACKAGE_READ_TOKEN }}
