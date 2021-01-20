@@ -40,7 +40,7 @@ dependencies {
     implementation("de.gmuth.ipp:ipp-client-kotlin:2.0-SNAPSHOT")
 }
 
-// gw --refresh-dependencies clean
+// gw --refresh-dependencies clean compile
 //configurations.all {
 //    resolutionStrategy.cacheChangingModulesFor(0, "seconds")
 //}
