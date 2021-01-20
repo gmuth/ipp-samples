@@ -38,3 +38,5 @@ jobs:
 
       - name: Build with gradle wrapper
         run: ./gradlew build
+        env:
+          PACKAGE_READ_TOKEN: ${{ secrets.PACKAGE_READ_TOKEN }}
