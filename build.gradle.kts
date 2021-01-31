@@ -2,11 +2,11 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     id("java")
-    id("org.jetbrains.kotlin.jvm") version "1.4.10"
+    id("org.jetbrains.kotlin.jvm") version "1.4.20"
 }
 
 group = "de.gmuth"
-version = "1.0-SNAPSHOT"
+version = "1.0"
 
 repositories {
     maven {
@@ -34,13 +34,14 @@ tasks.withType<KotlinCompile> {
 dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9")
-    implementation("ch.qos.logback:logback-classic:1.2.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2")
+
     implementation("org.jmdns:jmdns:3.5.6")
-    implementation("de.gmuth.ipp:ipp-client-kotlin:2.0-SNAPSHOT")
+    implementation("de.gmuth.ipp:ipp-client-kotlin:2.0")
+    implementation("ch.qos.logback:logback-classic:1.2.3")
 }
 
-// gw --refresh-dependencies clean compile
+// gw --refresh-dependencies clean build
 //configurations.all {
 //    resolutionStrategy.cacheChangingModulesFor(0, "seconds")
 //}
