@@ -9,6 +9,8 @@ group = "de.gmuth"
 version = "1.0"
 
 repositories {
+    // known issue: SNAPSHOTS from github packages are not found by gradle (maven build works!)
+    // https://www.flowsquad.io/blog/2020-05-29-devops-mit-github-teil-1-github-packages-mit-gradle/
     maven {
         url = uri("https://maven.pkg.github.com/gmuth/ipp-client-kotlin")
         credentials {
@@ -18,6 +20,8 @@ repositories {
             username = project.findProperty("gpr.user") as String? ?: System.getenv("GITHUB_ACTOR")
             password = project.findProperty("gpr.token") as String? ?: System.getenv("PACKAGE_READ_TOKEN")
         }
+        //mavenContent {snapshotsOnly()}
+        //metadataSources {artifact()}
     }
     mavenLocal()
     mavenCentral()
@@ -37,12 +41,13 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2")
 
     implementation("org.jmdns:jmdns:3.5.6")
-    //implementation("de.gmuth.ipp:ipp-client-kotlin:2.0")
-    implementation("de.gmuth.ipp:ipp-client-kotlin:2.1-SNAPSHOT")
+    implementation("de.gmuth.ipp:ipp-client-kotlin:2.0")
+    //implementation("de.gmuth.ipp:ipp-client-kotlin:2.1.0-SNAPSHOT") // not found due to github package issue
     implementation("ch.qos.logback:logback-classic:1.2.3")
 }
 
 // gw --refresh-dependencies clean build
-//configurations.all {
+// configurations.all {
 //    resolutionStrategy.cacheChangingModulesFor(0, "seconds")
-//}
+//    resolutionStrategy.cacheDynamicVersionsFor(0, "seconds")
+// }
