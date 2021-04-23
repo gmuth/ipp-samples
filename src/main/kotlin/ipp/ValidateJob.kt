@@ -1,12 +1,8 @@
 package ipp
 
-import de.gmuth.ipp.client.IppColorMode
-import de.gmuth.ipp.client.IppMedia
-import de.gmuth.ipp.client.IppPrinter
-import de.gmuth.ipp.client.IppSides
+import de.gmuth.ipp.client.*
 import de.gmuth.ipp.client.IppTemplateAttributes.documentFormat
 import de.gmuth.ipp.client.IppTemplateAttributes.printerResolution
-import de.gmuth.ipp.core.IppExchangeException
 import de.gmuth.ipp.core.IppResolution.Unit.DPI
 
 fun main() {
