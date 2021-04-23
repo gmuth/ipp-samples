@@ -1,6 +1,7 @@
 package log
 
 import de.gmuth.log.Logging
+import de.gmuth.log.Logging.LogLevel.TRACE
 
 class IppClientLoggingDemo {
 
@@ -16,6 +17,7 @@ class IppClientLoggingDemo {
         log.error { "error message" }
         log.error(null) { "null exception" }
         log.error(IllegalStateException("throwable message")) { "exception" }
+        log.log(TRACE) { "trace message" }
     }
 }
 
