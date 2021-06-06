@@ -41,8 +41,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2")
 
     implementation("org.jmdns:jmdns:3.5.6")
-    implementation("de.gmuth.ipp:ipp-client-kotlin:2.0")
-    //implementation("de.gmuth.ipp:ipp-client-kotlin:2.1.0-SNAPSHOT") // not found due to github package issue
+    //implementation("de.gmuth.ipp:ipp-client-kotlin:2.0")
+    implementation("de.gmuth.ipp:ipp-client-kotlin:2.1.0-SNAPSHOT") // not found due to github package issue, must install manually
     implementation("ch.qos.logback:logback-classic:1.2.3")
 }
 
