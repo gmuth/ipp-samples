@@ -33,11 +33,13 @@ public class ValidateJob {
       ippValidationResponse = ippExchangeException.getIppResponse();
     }
 
-    System.out.println("status: " + ippValidationResponse.getStatus());
-    if (ippValidationResponse.getUnsupportedGroup().size() > 0) {
-      System.out.println("unsupported attributes or values:");
-      for (IppAttribute ippAttribute : ippValidationResponse.getUnsupportedGroup().values()) {
-        System.out.println(ippAttribute);
+    if (ippValidationResponse != null) {
+      System.out.println("status: " + ippValidationResponse.getStatus());
+      if (ippValidationResponse.getUnsupportedGroup().size() > 0) {
+        System.out.println("unsupported attributes or values:");
+        for (IppAttribute ippAttribute : ippValidationResponse.getUnsupportedGroup().values()) {
+          System.out.println(ippAttribute);
+        }
       }
     }
   }

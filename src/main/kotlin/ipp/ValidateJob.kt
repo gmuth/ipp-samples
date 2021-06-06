@@ -22,12 +22,14 @@ fun main() {
         ippExchangeException.ippResponse
     }
 
-    with(ippValidationResponse) {
-        println("status: $status")
-        if (unsupportedGroup.size > 0) {
-            println("unsupported attributes or values:")
-            for (ippAttribute in unsupportedGroup.values) {
-                println(ippAttribute)
+    if (ippValidationResponse != null) {
+        with(ippValidationResponse) {
+            println("status: $status")
+            if (unsupportedGroup.size > 0) {
+                println("unsupported attributes or values:")
+                for (ippAttribute in unsupportedGroup.values) {
+                    println(ippAttribute)
+                }
             }
         }
     }
