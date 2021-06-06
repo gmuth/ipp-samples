@@ -23,8 +23,6 @@ public class PdfPrintJob {
       IppColorMode.Monochrome,
       IppSides.TwoSidedLongEdge
     );
-    job.logDetails();
-
     job.waitForTermination();
     job.logDetails();
   }

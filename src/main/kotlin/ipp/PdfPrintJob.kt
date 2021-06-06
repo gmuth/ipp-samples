@@ -21,8 +21,6 @@ fun main() {
             pageRanges(2..5),
             IppColorMode.Monochrome
     )
-    job.logDetails()
-
     job.waitForTermination()
     job.logDetails()
 }
