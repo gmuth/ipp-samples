@@ -19,7 +19,8 @@ fun main() {
 
     } catch (ippExchangeException: IppExchangeException) {
         println(ippExchangeException)
-        ippExchangeException.ippResponse
+        //ippExchangeException.ippResponse
+        ippExchangeException.response
     }
 
     if (ippValidationResponse != null) {

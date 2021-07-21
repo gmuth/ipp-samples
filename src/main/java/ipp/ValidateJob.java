@@ -30,7 +30,8 @@ public class ValidateJob {
     } catch (IppExchangeException ippExchangeException) {
       ippExchangeException.logDetails();
       System.out.println(ippExchangeException);
-      ippValidationResponse = ippExchangeException.getIppResponse();
+      //ippValidationResponse = ippExchangeException.getIppResponse();
+      ippValidationResponse = ippExchangeException.getResponse();
     }
 
     if (ippValidationResponse != null) {
