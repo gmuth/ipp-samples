@@ -29,6 +29,6 @@ jobs:
       - name: Grant execute permission
         run: chmod +x gradlew
       - name: Build with gradle wrapper
-        run: ./gradlew build
+        run: ./gradlew --refresh-dependencies build
         env:
           PACKAGE_READ_TOKEN: ${{ secrets.PACKAGE_READ_TOKEN }}
