@@ -12,8 +12,9 @@ class Slf4kDemo {
         log.info { "info  message" }
         log.warn { "warn  message" }
         log.error { "error message" }
+        log.error { null }
         log.error(null) { "null exception" }
-        log.error(IllegalStateException("throwable message")) { "exception" }
+        log.error(IllegalStateException("throwable message")) { "IllegalStateException" }
     }
 }
 
