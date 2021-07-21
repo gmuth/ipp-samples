@@ -11,6 +11,7 @@ version = "1.0"
 repositories {
     // known issue: SNAPSHOTS from github packages are not found by gradle (maven build works!)
     // https://www.flowsquad.io/blog/2020-05-29-devops-mit-github-teil-1-github-packages-mit-gradle/
+    // solution: gradle --refresh-dependencies clean build
     maven {
         url = uri("https://maven.pkg.github.com/gmuth/ipp-client-kotlin")
         credentials {
