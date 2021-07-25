@@ -1,0 +1,4 @@
+job-uri (uri) = ipp://ColorJet.local/ipp/printer/0047
+job-id (integer) = 47
+job-state (enum) = pending
+job-state-reasons (1setOf keyword) = none
