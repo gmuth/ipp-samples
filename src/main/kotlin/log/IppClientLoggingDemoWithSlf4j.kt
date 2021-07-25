@@ -6,6 +6,6 @@ import de.gmuth.log.Logging
 
 fun main() {
     //Slf4jLogging.configure() // 2.1
-    Logging.configureSlf4j() // 2.2
+    Logging.useSlf4j() // 2.2
     IppClientLoggingDemo().log()
 }
