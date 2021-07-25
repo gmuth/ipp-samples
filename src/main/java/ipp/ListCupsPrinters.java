@@ -1,7 +1,7 @@
 package ipp;
 
+import de.gmuth.ipp.client.CupsClient;
 import de.gmuth.ipp.client.IppPrinter;
-import de.gmuth.ipp.cups.CupsClient;
 
 public class ListCupsPrinters {
 

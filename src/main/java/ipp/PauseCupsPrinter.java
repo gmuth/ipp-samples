@@ -1,6 +1,6 @@
 package ipp;
 
-import de.gmuth.ipp.cups.CupsClient;
+import de.gmuth.ipp.client.CupsClient;
 
 public class PauseCupsPrinter {
 
