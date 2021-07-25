@@ -47,6 +47,17 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:1.2.3")
 }
 
+tasks.jar {
+    manifest {
+        attributes["Main-Class"] = "ipp.InspectPrinterKt"
+    }
+    from(sourceSets.main.get().output)
+    dependsOn(configurations.runtimeClasspath)
+    from({
+        configurations.runtimeClasspath.get().map { zipTree(it) }
+    })
+}
+
 // gw --refresh-dependencies clean build
 // configurations.all {
 //    resolutionStrategy.cacheChangingModulesFor(0, "seconds")
