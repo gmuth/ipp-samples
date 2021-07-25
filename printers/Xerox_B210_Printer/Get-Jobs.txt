@@ -1,0 +1,7 @@
+job-id (integer) = 829
+job-uri (uri) = ipps://xero.local/Job-829
+job-printer-uri (uri) = ipps://xero.local
+job-state (enum) = pending-held
+job-name (nameWithoutLanguage) = blank_A4.pdf
+job-state-reasons (1setOf keyword) = job-hold-until-
+job-originating-user-name (nameWithoutLanguage) = gmuth

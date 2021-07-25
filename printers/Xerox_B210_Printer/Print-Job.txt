@@ -1,0 +1,4 @@
+job-id (integer) = 829
+job-state (enum) = pending-held
+job-state-reasons (1setOf keyword) = job-hold-until-specified
+job-uri (uri) = ipps://xero.local/Job-829
