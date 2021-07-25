@@ -81,7 +81,7 @@ fun main(args: Array<String>) {
             log.info { "get printer attributes" }
             getPrinterAttributes()
 
-            log.info { "print job pdfName" }
+            log.info { "print job $pdfName" }
             printJob(pdfStream, jobName(pdfName)).run {
                 log.info { toString() }
 
