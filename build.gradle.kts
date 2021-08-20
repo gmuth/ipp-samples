@@ -9,6 +9,8 @@ group = "de.gmuth"
 version = "1.0"
 
 repositories {
+    mavenLocal()
+    mavenCentral()
     // known issue: SNAPSHOTS from github packages are not found by gradle (maven build works!)
     // https://www.flowsquad.io/blog/2020-05-29-devops-mit-github-teil-1-github-packages-mit-gradle/
     // solution: gradle --refresh-dependencies clean build
@@ -24,8 +26,6 @@ repositories {
         //mavenContent {snapshotsOnly()}
         //metadataSources {artifact()}
     }
-    mavenLocal()
-    mavenCentral()
 }
 
 defaultTasks("clean", "compileJava", "compileKotlin")
