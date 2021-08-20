@@ -1,5 +1,6 @@
 package ipp
 
+import de.gmuth.ipp.client.IppConfig
 import de.gmuth.ipp.client.IppExchangeException
 import de.gmuth.ipp.client.IppPrinter
 import de.gmuth.ipp.client.IppTemplateAttributes.jobName
@@ -26,7 +27,8 @@ fun main(args: Array<String>) {
         var cancelJob = true
 
         log.info { "printerUri: $printerUri" }
-        IppPrinter(printerUri, verifySSLHostname = false).run {
+        val ippConfig = IppConfig(verifySSLHostname = false)
+        IppPrinter(printerUri, config = ippConfig).run {
 
             val printerModel = with(StringBuilder()) {
                 if (isCups()) append("CUPS_")
