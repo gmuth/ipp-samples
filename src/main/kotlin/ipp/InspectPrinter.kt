@@ -19,14 +19,22 @@ import java.net.URI
  * - Hold-Job, Release-Job, Cancel-Job
  */
 fun main(args: Array<String>) {
-    val log = Logging.getLogger { }
     try {
         var printerUri = URI.create("ipp://localhost:8632/printers/laser") // Apple's PrinterSimulator
         if (args.size > 0) printerUri = URI.create(args[0])
+        InspectPrinter.inspect(printerUri)
+    } catch (exchangeException: IppExchangeException) {
+        exchangeException.logDetails()
+        InspectPrinter.log.error(exchangeException) { "inspect printer failed" }
+    }
+}
 
-        var cancelJob = true
+object InspectPrinter {
+    val log = Logging.getLogger { }
 
+    fun inspect(printerUri: URI, cancelJob: Boolean = true) {
         log.info { "printerUri: $printerUri" }
+
         val ippConfig = IppConfig(verifySSLHostname = false)
         IppPrinter(printerUri, config = ippConfig).run {
 
@@ -109,10 +117,5 @@ fun main(args: Array<String>) {
                 if (!isTerminated()) waitForTermination()
             }
         }
-
-    } catch (exchangeException: IppExchangeException) {
-        exchangeException.logDetails()
-        log.error(exchangeException) { "inspect printer failed" }
     }
-
 }
