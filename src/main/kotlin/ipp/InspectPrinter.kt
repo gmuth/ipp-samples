@@ -91,6 +91,13 @@ object InspectPrinter {
             log.info { "get printer attributes" }
             getPrinterAttributes()
 
+            try {
+                log.info { "identify by sound" }
+                sound()
+            } catch (exception: Exception) {
+                log.error { "identify failed: $exception" }
+            }
+
             log.info { "print job $pdfName" }
             printJob(pdfStream, jobName(pdfName)).run {
                 log.info { toString() }
