@@ -59,8 +59,8 @@ object InspectPrinter {
             log.info { "mediaReady: $mediaReady " }
 
             val pdfName = when (mediaReady) {
-                "na_letter_8.5x11in" -> "blank_USLetter.pdf"
-                "iso_a4_210x297mm" -> "blank_A4.pdf"
+                "na_letter", "na_letter_8.5x11in" -> "blank_USLetter.pdf"
+                "iso-a4", "iso_a4_210x297mm" -> "blank_A4.pdf"
                 null -> {
                     log.warn { "printer does not support 'media-ready', trying A4" }
                     "blank_A4.pdf"
