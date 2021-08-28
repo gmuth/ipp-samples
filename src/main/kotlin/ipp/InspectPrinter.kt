@@ -19,10 +19,44 @@ import java.net.URI
  * - Hold-Job, Release-Job, Cancel-Job
  */
 fun main(args: Array<String>) {
+    val log = Logging.getLogger { }
     try {
         var printerUri = URI.create("ipp://localhost:8632/printers/laser") // Apple's PrinterSimulator
         if (args.size > 0) printerUri = URI.create(args[0])
-        InspectPrinter.inspect(printerUri)
+
+        // use default acceptEncoding set by http implementation
+        val ippConfig = IppConfig().apply {
+            verifySSLHostname = false
+            acceptEncoding = null
+        }
+        try {
+            InspectPrinter.inspect(printerUri, ippConfig)
+        } catch (exception: Exception) {
+            ippConfig.logDetails()
+            log.error(exception) { "inspection 1 failed" }
+
+            // no ipp requesting-user-name
+            ippConfig.apply {
+                userName = null
+            }
+            try {
+                InspectPrinter.inspect(printerUri, ippConfig)
+            } catch (exception: Exception) {
+                ippConfig.logDetails()
+                log.error(exception) { "inspection 2 failed" }
+
+                // no http header user-agent
+                ippConfig.apply {
+                    userAgent = null
+                }
+                try {
+                    InspectPrinter.inspect(printerUri, ippConfig)
+                } catch (exception: Exception) {
+                    ippConfig.logDetails()
+                    log.error(exception) { "inspection 3 failed" }
+                }
+            }
+        }
     } catch (exchangeException: IppExchangeException) {
         exchangeException.logDetails()
         InspectPrinter.log.error(exchangeException) { "inspect printer failed" }
@@ -32,10 +66,9 @@ fun main(args: Array<String>) {
 object InspectPrinter {
     val log = Logging.getLogger { }
 
-    fun inspect(printerUri: URI, cancelJob: Boolean = true) {
+    fun inspect(printerUri: URI, ippConfig: IppConfig, cancelJob: Boolean = false) {
         log.info { "printerUri: $printerUri" }
 
-        val ippConfig = IppConfig(verifySSLHostname = false)
         IppPrinter(printerUri, config = ippConfig).run {
 
             val printerModel = with(StringBuilder()) {
