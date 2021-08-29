@@ -59,7 +59,7 @@ tasks.jar {
 }
 
 // gw --refresh-dependencies clean build
-// configurations.all {
+configurations.all {
 //    resolutionStrategy.cacheChangingModulesFor(0, "seconds")
-//    resolutionStrategy.cacheDynamicVersionsFor(0, "seconds")
-// }
+    resolutionStrategy.cacheDynamicVersionsFor(0, "seconds")
+}
