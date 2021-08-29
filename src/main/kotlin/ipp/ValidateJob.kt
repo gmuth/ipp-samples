@@ -19,18 +19,15 @@ fun main() {
 
     } catch (ippExchangeException: IppExchangeException) {
         println(ippExchangeException)
-        //ippExchangeException.ippResponse
         ippExchangeException.response
     }
 
-    if (ippValidationResponse != null) {
-        with(ippValidationResponse) {
-            println("status: $status")
-            if (unsupportedGroup.size > 0) {
-                println("unsupported attributes or values:")
-                for (ippAttribute in unsupportedGroup.values) {
-                    println(ippAttribute)
-                }
+    ippValidationResponse?.run {
+        println("status: $status")
+        if (unsupportedGroup.size > 0) {
+            println("unsupported attributes or values:")
+            for (ippAttribute in unsupportedGroup.values) {
+                println(ippAttribute)
             }
         }
     }
