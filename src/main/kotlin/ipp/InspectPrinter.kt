@@ -1,5 +1,6 @@
 package ipp
 
+import de.gmuth.http.Http
 import de.gmuth.ipp.client.IppConfig
 import de.gmuth.ipp.client.IppExchangeException
 import de.gmuth.ipp.client.IppPrinter
@@ -24,36 +25,37 @@ fun main(args: Array<String>) {
         var printerUri = URI.create("ipp://localhost:8632/printers/laser") // Apple's PrinterSimulator
         if (args.size > 0) printerUri = URI.create(args[0])
 
-        // use default acceptEncoding set by http implementation
-        val ippConfig = IppConfig().apply {
-            verifySSLHostname = false
+        val httpConfig = Http.Config().apply {
+            userAgent = null
             acceptEncoding = null
         }
+        // use default acceptEncoding set by http implementation
+        val ippConfig = IppConfig().apply {
+            userName = null
+        }
         try {
-            InspectPrinter.inspect(printerUri, ippConfig)
+            InspectPrinter.inspect(printerUri, httpConfig, ippConfig)
         } catch (exception: Exception) {
             ippConfig.logDetails()
-            log.error(exception) { "inspection 1 failed" }
+            log.error(exception) { "inspection 4 failed" }
 
-            // no ipp requesting-user-name
-            ippConfig.apply {
-                userName = null
+            httpConfig.apply {
+                acceptEncoding = "identity"
             }
             try {
-                InspectPrinter.inspect(printerUri, ippConfig)
+                InspectPrinter.inspect(printerUri, httpConfig, ippConfig)
             } catch (exception: Exception) {
                 ippConfig.logDetails()
-                log.error(exception) { "inspection 2 failed" }
+                log.error(exception) { "inspection 5 failed" }
 
-                // no http header user-agent
                 ippConfig.apply {
-                    userAgent = null
+                    userName = "first.last"
                 }
                 try {
-                    InspectPrinter.inspect(printerUri, ippConfig)
+                    InspectPrinter.inspect(printerUri, httpConfig, ippConfig)
                 } catch (exception: Exception) {
                     ippConfig.logDetails()
-                    log.error(exception) { "inspection 3 failed" }
+                    log.error(exception) { "inspection 6 failed" }
                 }
             }
         }
@@ -66,10 +68,15 @@ fun main(args: Array<String>) {
 object InspectPrinter {
     val log = Logging.getLogger { }
 
-    fun inspect(printerUri: URI, ippConfig: IppConfig, cancelJob: Boolean = false) {
+    fun inspect(
+            printerUri: URI,
+            httpConfig: Http.Config,
+            ippConfig: IppConfig,
+            cancelJob: Boolean = false
+    ) {
         log.info { "printerUri: $printerUri" }
 
-        IppPrinter(printerUri, config = ippConfig).run {
+        IppPrinter(printerUri, httpConfig = httpConfig, ippConfig = ippConfig).run {
 
             val printerModel = with(StringBuilder()) {
                 if (isCups()) append("CUPS_")
