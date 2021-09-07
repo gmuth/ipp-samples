@@ -15,7 +15,7 @@ public class PdfPrintJob {
   public static void main(String[] args) {
 
     IppConfig ippConfig = new IppConfig();
-    ippConfig.setChunkedTransferEncoding(false); // default: false
+    //ippConfig.setChunkedTransferEncoding(false); // default: false
     //HttpURLConnectionClient.Companion.getLog().setLogLevel(LogLevel.DEBUG);
 
     IppPrinter ippPrinter = new IppPrinter("ipp://localhost:8632/printers/laser", ippConfig);
