@@ -26,38 +26,39 @@ fun main(args: Array<String>) {
         if (args.size > 0) printerUri = URI.create(args[0])
 
         val httpConfig = Http.Config().apply {
-            userAgent = null
-            acceptEncoding = null
+            debugLogging = true
         }
-        // use default acceptEncoding set by http implementation
         val ippConfig = IppConfig().apply {
-            userName = null
         }
+
         try {
+            httpConfig.apply {
+                accept = "application/ipp"
+            }
             InspectPrinter.inspect(printerUri, httpConfig, ippConfig)
         } catch (exception: Exception) {
-            ippConfig.logDetails()
-            log.error(exception) { "inspection 4 failed" }
+            log.info { "accept ${httpConfig.accept}" }
+            log.error(exception) { "inspection 7 failed" }
+        }
 
+        try {
             httpConfig.apply {
-                acceptEncoding = "identity"
+                accept = "*/*"
             }
-            try {
-                InspectPrinter.inspect(printerUri, httpConfig, ippConfig)
-            } catch (exception: Exception) {
-                ippConfig.logDetails()
-                log.error(exception) { "inspection 5 failed" }
+            InspectPrinter.inspect(printerUri, httpConfig, ippConfig)
+        } catch (exception: Exception) {
+            log.info { "accept ${httpConfig.accept}" }
+            log.error(exception) { "inspection 8 failed" }
+        }
 
-                ippConfig.apply {
-                    userName = "first.last"
-                }
-                try {
-                    InspectPrinter.inspect(printerUri, httpConfig, ippConfig)
-                } catch (exception: Exception) {
-                    ippConfig.logDetails()
-                    log.error(exception) { "inspection 6 failed" }
-                }
+        try {
+            httpConfig.apply {
+                accept = "application/ipp, */*; q=.4, *; q=.2"
             }
+            InspectPrinter.inspect(printerUri, httpConfig, ippConfig)
+        } catch (exception: Exception) {
+            log.info { "accept ${httpConfig.accept}" }
+            log.error(exception) { "inspection 9 failed" }
         }
     } catch (exchangeException: IppExchangeException) {
         exchangeException.logDetails()
