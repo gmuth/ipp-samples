@@ -96,16 +96,16 @@ object InspectPrinter {
                 if (containsKey("media-ready")) log.info { "media-ready: $mediaReady" }
             }
 
-            val mediaReady = if (attributes.containsKey("media-ready")) mediaReady.first() else null
+            val mediaReady = if (attributes.containsKey("media-ready")) mediaReady else null
             log.info { "mediaReady: $mediaReady " }
 
-            val pdfName = when (mediaReady) {
-                "na_letter", "na_letter_8.5x11in" -> "blank_USLetter.pdf"
-                "iso-a4", "iso_a4_210x297mm" -> "blank_A4.pdf"
-                null -> {
+            val pdfName = when {
+                mediaReady == null -> {
                     log.warn { "printer does not support 'media-ready', trying A4" }
                     "blank_A4.pdf"
                 }
+                mediaReady.contains("na_letter") || mediaReady.contains("na_letter_8.5x11in") -> "blank_USLetter.pdf"
+                mediaReady.contains("iso-a4") || mediaReady.contains("iso_a4_210x297mm") -> "blank_A4.pdf"
                 else -> {
                     log.warn { "no pdf available for media '$mediaReady', trying A4" }
                     "blank_A4.pdf"
