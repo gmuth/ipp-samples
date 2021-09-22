@@ -22,6 +22,6 @@ class IppClientLoggingDemo {
 }
 
 fun main() {
-    Logging.defaultLogLevel = Logging.LogLevel.TRACE
+    Logging.defaultLogLevel = TRACE
     IppClientLoggingDemo().log()
 }
