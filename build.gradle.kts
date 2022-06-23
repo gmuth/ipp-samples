@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     id("java")
-    id("org.jetbrains.kotlin.jvm") version "1.4.20"
+    id("org.jetbrains.kotlin.jvm") version "1.5.32"
 }
 
 group = "de.gmuth"
@@ -42,8 +42,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2")
 
     implementation("org.jmdns:jmdns:3.5.6")
-    //implementation("de.gmuth.ipp:ipp-client-kotlin:2.1")
-    implementation("de.gmuth.ipp:ipp-client-kotlin:2.2-SNAPSHOT") // SNAPSHOTS not found due to github package issue, must install manually
+    //implementation("de.gmuth.ipp:ipp-client-kotlin")
+    implementation("de.gmuth.ipp:ipp-client-kotlin:2.3-SNAPSHOT") // SNAPSHOTS not found due to github package issue, must install manually
     implementation("ch.qos.logback:logback-classic:1.2.3")
 }
 
@@ -61,5 +61,5 @@ tasks.jar {
 // gw --refresh-dependencies clean build
 configurations.all {
 //    resolutionStrategy.cacheChangingModulesFor(0, "seconds")
-    resolutionStrategy.cacheDynamicVersionsFor(0, "seconds")
+//    resolutionStrategy.cacheDynamicVersionsFor(0, "seconds") // this one looks good
 }
