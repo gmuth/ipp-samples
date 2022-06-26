@@ -46,7 +46,7 @@ dependencies {
 
     implementation("org.jmdns:jmdns:3.5.6")
     //implementation("de.gmuth.ipp:ipp-client-kotlin")
-    implementation("de.gmuth:ipp-client:2.4.0-SNAPSHOT") // SNAPSHOTS not found due to github package issue, must install manually
+    implementation("de.gmuth:ipp-client:2.3-SNAPSHOT") // SNAPSHOTS not found due to github package issue, must install manually
     implementation("ch.qos.logback:logback-classic:1.2.3")
 }
 
