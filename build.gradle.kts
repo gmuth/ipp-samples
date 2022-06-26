@@ -9,30 +9,33 @@ group = "de.gmuth"
 version = "1.0"
 
 repositories {
-    mavenLocal()
+    //mavenLocal()
     mavenCentral()
+    maven {
+        url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+    }
     // known issue: SNAPSHOTS from github packages are not found by gradle (maven build works!)
     // https://www.flowsquad.io/blog/2020-05-29-devops-mit-github-teil-1-github-packages-mit-gradle/
     // solution: gradle --refresh-dependencies clean build
-    maven {
-        url = uri("https://maven.pkg.github.com/gmuth/ipp-client-kotlin")
-        credentials {
-            // set gpr.user and gpr.token in ~/.gradle/gradle.properties
-            // gpr.user=myname
-            // gpr.token=mytoken
-            username = project.findProperty("gpr.user") as String? ?: System.getenv("GITHUB_ACTOR")
-            password = project.findProperty("gpr.token") as String? ?: System.getenv("PACKAGE_READ_TOKEN")
-        }
-        //mavenContent {snapshotsOnly()}
-        //metadataSources {artifact()}
-    }
+//    maven {
+//        url = uri("https://maven.pkg.github.com/gmuth/ipp-client-kotlin")
+//        credentials {
+//            // set gpr.user and gpr.token in ~/.gradle/gradle.properties
+//            // gpr.user=myname
+//            // gpr.token=mytoken
+//            username = project.findProperty("gpr.user") as String? ?: System.getenv("GITHUB_ACTOR")
+//            password = project.findProperty("gpr.token") as String? ?: System.getenv("PACKAGE_READ_TOKEN")
+//        }
+    //mavenContent {snapshotsOnly()}
+    //metadataSources {artifact()}
+    //   }
 }
 
 defaultTasks("clean", "compileJava", "compileKotlin")
 
 tasks.withType<KotlinCompile> {
     kotlinOptions {
-        jvmTarget = "1.6"
+        jvmTarget = "11"
     }
 }
 
@@ -43,7 +46,7 @@ dependencies {
 
     implementation("org.jmdns:jmdns:3.5.6")
     //implementation("de.gmuth.ipp:ipp-client-kotlin")
-    implementation("de.gmuth.ipp:ipp-client-kotlin:2.3-SNAPSHOT") // SNAPSHOTS not found due to github package issue, must install manually
+    implementation("de.gmuth:ipp-client:2.4.0-SNAPSHOT") // SNAPSHOTS not found due to github package issue, must install manually
     implementation("ch.qos.logback:logback-classic:1.2.3")
 }
 
