@@ -5,11 +5,12 @@ import de.gmuth.ipp.client.IppPrinter
 import de.gmuth.ipp.client.IppTemplateAttributes.documentFormat
 import de.gmuth.ipp.client.IppTemplateAttributes.jobName
 import de.gmuth.ipp.client.IppTemplateAttributes.pageRanges
+import ipp.Printers.laser
 import java.io.File
 
 fun main() {
     //JulAdapter.configure("/ipp-client-logging.conf")
-    val ippPrinter = IppPrinter("ipp://localhost:8632/printers/laser").apply {
+    val ippPrinter = IppPrinter(laser).apply {
         logDetails()
     }
 

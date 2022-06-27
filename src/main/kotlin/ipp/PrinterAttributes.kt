@@ -1,9 +1,10 @@
 package ipp
 
 import de.gmuth.ipp.client.IppPrinter
+import ipp.Printers.laser
 
 fun main() {
-    val ippPrinter = IppPrinter("ipp://localhost:8632/printers/laser")
+    val ippPrinter = IppPrinter(laser)
     ippPrinter.logDetails()
 
     println("printer attributes:")

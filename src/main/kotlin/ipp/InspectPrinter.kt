@@ -22,7 +22,7 @@ import java.net.URI
 fun main(args: Array<String>) {
     val log = Logging.getLogger { }
     try {
-        var printerUri = URI.create("ipp://localhost:8632/printers/laser") // Apple's PrinterSimulator
+        var printerUri = URI.create("ipp://localhost:8632/ipp/print/laser") // Apple's PrinterSimulator
         if (args.size > 0) printerUri = URI.create(args[0])
 
         val httpConfig = Http.Config().apply {
