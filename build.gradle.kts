@@ -11,9 +11,7 @@ version = "1.0"
 repositories {
     //mavenLocal()
     mavenCentral()
-    maven {
-        url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
-    }
+    //maven { url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/") }
     // known issue: SNAPSHOTS from github packages are not found by gradle (maven build works!)
     // https://www.flowsquad.io/blog/2020-05-29-devops-mit-github-teil-1-github-packages-mit-gradle/
     // solution: gradle --refresh-dependencies clean build
@@ -45,8 +43,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2")
 
     implementation("org.jmdns:jmdns:3.5.6")
-    //implementation("de.gmuth.ipp:ipp-client-kotlin")
-    implementation("de.gmuth:ipp-client:2.3-SNAPSHOT") // SNAPSHOTS not found due to github package issue, must install manually
+    implementation("de.gmuth:ipp-client:2.3") // SNAPSHOTS not found due to github package issue, must install manually
     implementation("ch.qos.logback:logback-classic:1.2.3")
 }
 
@@ -61,8 +58,8 @@ tasks.jar {
     })
 }
 
-// gw --refresh-dependencies clean build
+// for snapshots: gradlew --refresh-dependencies cK
 configurations.all {
-//    resolutionStrategy.cacheChangingModulesFor(0, "seconds")
-//    resolutionStrategy.cacheDynamicVersionsFor(0, "seconds") // this one looks good
+    resolutionStrategy.cacheChangingModulesFor(0, "seconds")
+    resolutionStrategy.cacheDynamicVersionsFor(0, "seconds") // this one looks good
 }
