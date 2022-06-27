@@ -5,7 +5,7 @@ import de.gmuth.ipp.client.IppPrinter;
 public class DocumentFormatSupported {
 
   public static void main(String[] args) {
-    IppPrinter ippPrinter = new IppPrinter("ipp://localhost:8632/printers/laser");
+    IppPrinter ippPrinter = new IppPrinter("ipp://localhost:8632/ipp/print/laser");
     System.out.println("supported document formats:");
     for (String mimeMediaType : ippPrinter.getDocumentFormatSupported()) {
       System.out.println(mimeMediaType);

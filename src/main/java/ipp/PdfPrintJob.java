@@ -18,7 +18,7 @@ public class PdfPrintJob {
     //ippConfig.setChunkedTransferEncoding(false); // default: false
     //HttpURLConnectionClient.Companion.getLog().setLogLevel(LogLevel.DEBUG);
 
-    IppPrinter ippPrinter = new IppPrinter("ipp://localhost:8632/printers/laser", ippConfig);
+    IppPrinter ippPrinter = new IppPrinter("ipp://localhost:8632/ipp/print/laser", ippConfig);
     ippPrinter.logDetails();
 
     File file = new File("test-docs/A4-ten-pages.pdf");

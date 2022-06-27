@@ -4,30 +4,32 @@ import de.gmuth.ipp.client.*
 import de.gmuth.ipp.client.IppTemplateAttributes.documentFormat
 import de.gmuth.ipp.client.IppTemplateAttributes.printerResolution
 import de.gmuth.ipp.core.IppResolution.Unit.DPI
+import de.gmuth.log.Logging
+import ipp.Printers.laser
 
 fun main() {
-    val ippPrinter = IppPrinter("ipp://localhost:8632/printers/laser")
+    val log = Logging.getLogger {}
+    val ippPrinter = IppPrinter(laser)
 
     val ippValidationResponse = try {
         ippPrinter.validateJob(
-                documentFormat("application/pdf"),
-                printerResolution(600, DPI),
-                IppColorMode.Color,
-                IppSides.TwoSidedLongEdge,
-                IppMedia.Collection(source = "manual")
+            documentFormat("application/pdf"),
+            printerResolution(600, DPI),
+            IppColorMode.Color,
+            IppSides.TwoSidedLongEdge,
+            IppMedia.Collection(source = "manual")
         )
 
     } catch (ippExchangeException: IppExchangeException) {
-        println(ippExchangeException)
+        //log.error(ippExchangeException) {"failed to validate job"}
+        log.logWithCauseMessages(ippExchangeException)
         ippExchangeException.response
     }
 
     ippValidationResponse?.run {
-        println("status: $status")
         if (unsupportedGroup.size > 0) {
-            println("unsupported attributes or values:")
             for (ippAttribute in unsupportedGroup.values) {
-                println(ippAttribute)
+                log.info { ippAttribute }
             }
         }
     }
