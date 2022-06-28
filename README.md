@@ -52,28 +52,6 @@ job.logDetails();
 
 ## Dependency
 
-[Configure Gradle for use with Github Packages](https://docs.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-gradle-for-use-with-github-packages).
-Use this [github package](https://github.com/gmuth/ipp-client-kotlin/packages/214725/versions) of the project as maven repo.
-You can access the repo with any github account.
 ```
-repositories {
-    jcenter()
-    maven {
-      url = uri("https://maven.pkg.github.com/gmuth/ipp-client-kotlin")
-      credentials {
-          // configure gpr.user and gpr.token in ~/.gradle/gradle.properties
-          // gpr.user=yourname
-          // gpr.token=yourtoken
-          username = project.findProperty("gpr.user") as String?
-          password = project.findProperty("gpr.token") as String?
-      }
-    }
-}
-```
-
-Add dependency:
-
-```
-    implementation("de.gmuth.ipp:ipp-client-kotlin:1.9")
-or  implementation("de.gmuth.ipp:ipp-client-kotlin:2.0-SNAPSHOT")
+    implementation("de.gmuth:ipp-client:2.3")
 ```
