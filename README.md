@@ -13,7 +13,7 @@ Use [jmDNS](https://github.com/jmdns/jmdns) to
 [discover printers](https://github.com/gmuth/ipp-samples/blob/main/src/main/kotlin/mdns/DiscoverIppPrinters.kt)
 via Bonjour including AirPrint compatible printers.
 
-```
+```kotlin
 val jmDns = JmDNS.create()
 jmDns.list("_ipp._tcp.local.").forEach {
     val printerName = it.name
