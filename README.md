@@ -29,14 +29,14 @@ jmDns.close()
 
 Print a pdf file and wait for the printer to finish.
 
-```
+```java
 // initialize printer connection and show printer attributes
-IppPrinter ippPrinter = new IppPrinter("ipp://colorjet.local/ipp/printer");
-ippPrinter.logDetails();
+IppPrinter ippPrinter=new IppPrinter("ipp://colorjet.local/ipp/printer");
+  ippPrinter.logDetails();
 
 // print file
-File file = new File("my-document.pdf");
-IppJob job = ippPrinter.printJob(
+  File file=new File("my-document.pdf");
+  IppJob job=ippPrinter.printJob(
   file,
   documentFormat("application/pdf"),
   jobName(file.getName()),
@@ -47,11 +47,10 @@ job.logDetails();
 // wait until printer has completed the job
 job.waitForTermination();
 job.logDetails();
-
 ```
 
 ## Dependency
 
-```
+```kotlin
     implementation("de.gmuth:ipp-client:2.3")
 ```
