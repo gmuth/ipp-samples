@@ -35,14 +35,14 @@ IppPrinter ippPrinter=new IppPrinter("ipp://colorjet.local/ipp/printer");
   ippPrinter.logDetails();
 
 // print file
-  File file=new File("my-document.pdf");
-  IppJob job=ippPrinter.printJob(
+File file=new File("my-document.pdf");
+IppJob job=ippPrinter.printJob(
   file,
   documentFormat("application/pdf"),
   jobName(file.getName()),
   IppColorMode.Monochrome
-  );
-  job.logDetails();
+);
+job.logDetails();
 
 // wait until printer has completed the job
 job.waitForTermination();
